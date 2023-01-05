@@ -1,0 +1,48 @@
+<hinv-header></hinv-header>
+
+<!-- {{ rooms$ | async | json }} -->
+<!-- <h1>Welcome to {{ hotelName }}</h1> -->
+<!-- event listening data binding -->
+<div [hidden]="hideRooms">
+    Number of Rooms
+    <div [ngStyle]="{ color: rooms.availableRooms ? 'green' : 'red' }" [innerText]="numberOfRooms"></div>
+</div>
+<div>
+    <!-- if theres no rooms availables display the string this is the null collision operator -->
+    {{ rooms?.availableRooms ?? "no Rooms available" }}
+</div>
+
+<!-- Json pipes -->
+<!-- {{ roomsList | json }} -->
+
+<div *ngIf="selectedRoom">
+    {{ selectedRoom | json }}
+</div>
+
+<!-- if theres no rooms available hide the div this is the optional channeling -->
+<!-- <div *ngIf="rooms.availableRooms > 0"> -->
+<!-- to send data to child to populate the table roomlist -->
+<!-- <hinv-rooms-list [rooms]="roomsList" [title]="title" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+</div> -->
+
+<!-- to use ngonDestroy life cycle hook -->
+<!-- asyn way to use the data -->
+<div *ngIf="rooms$ | async as roomss">
+    <hinv-rooms-list [rooms]="roomss" [title]="title" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+</div>
+
+<button (click)="toggle()">toggle</button>
+<div>
+    <button (click)="addRoom()">Add room</button>
+    <button (click)="updateRoom()">Edit room</button>
+    <button (click)="deleteRoom()">Delete room</button>
+</div>
+
+<div>
+    <h1>{{ totalBytes }} Bytes Loaded</h1>
+    <h1>No of rooms is {{ roomsCount$ | async }}</h1>
+</div>
+<!-- Number of Rooms:
+how to property bind
+<div [innerText]="numberOfRooms"></div>
+how to property bind -->

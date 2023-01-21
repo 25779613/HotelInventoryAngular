@@ -1,0 +1,3 @@
+add 
+    FormsModule, 
+in app.module.ts under imports than create a component to hold your html form

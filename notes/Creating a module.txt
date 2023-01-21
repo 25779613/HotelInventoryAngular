@@ -1,0 +1,33 @@
+**Create a module without creating a file(if file exists) and has a routing module
+ng g m rooms --routing  --flat=true
+
+**move all declarations and imports related to rooms from app module to rooms module
+
+** under imports in app.module register the rooms module
+
+    ,RoomsModule
+
+** in rooms module under imports add all missing imports from the error list
+
+
+    FormsModule,
+
+** if there are components that are used in multiple other components create its own module
+, doesnt need routing as theres no routes accessed by routes
+
+ng g m header --flat 
+
+** if you add a module under imports it cant be under declarations
+'
+** if you are using a component outside of its module & is reusable, you have to export it
+eg
+@NgModule({
+  declarations: [HeaderComponent],
+  imports: [
+    CommonModule
+  ],
+  exports:[HeaderComponent]
+})
+
+** if you have feature routing ,in app.module.ts make sure that it is added before AppRoutingModule under imports
+

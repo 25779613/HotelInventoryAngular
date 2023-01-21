@@ -1,0 +1,14 @@
+** split code based on routes
+** requirements
+-code that is reusable should not be lazyloaded, only seperate functions should be
+- code downloaded only by user interaction
+- the module choosen should be removed from any other module(from imports)
+
+** the module to be loaded should be under routes in app routing module 
+eg { path: 'rooms', loadChildren: () => import('./rooms/rooms.module').then((m) => m.RoomsModule) },
+
+** in the module that is lazy loaded remove the path name from it
+eg
+const routes: Routes = [
+  {
+    path: '', component: RoomsComponent

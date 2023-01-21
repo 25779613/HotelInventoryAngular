@@ -1,0 +1,16 @@
+*create a directive in terminal 
+ng g d <name> 
+eg: ng g d hover
+
+** then in a html file where you want to use the directive add the selector name in that element
+ eg:
+div class="form-group">
+      <input
+        hinvHover
+        type="password"
+        class="form-control"
+        placeholder="Input user password"
+        name="password"
+        [(ngModel)]="password"
+      />
+    </div>   

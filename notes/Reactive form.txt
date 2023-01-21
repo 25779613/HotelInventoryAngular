@@ -1,0 +1,19 @@
+**import reactive form in the feature module under imports in the feature.module.ts file
+eg imports: [
+    CommonModule,
+    BookingRoutingModule,
+    ReactiveFormsModule,
+
+**in the component.ts file create a booking form
+eg bookingForm !: FormGroup;
+
+**import FormBuilder from @angular/forms
+import { FormGroup , FormBuilder} from '@angular/forms';
+
+**in html create a form tag and import the form group directive to bind
+eg
+<form [formGroup]="bookingForm">
+    <div></div>
+</form>
+
+** use angular material form ,check website import code(html&CSS) and api(In feature.module.ts) for features used, check booking component

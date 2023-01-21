@@ -1,0 +1,40 @@
+*import the http client module
+
+import{HttpClientModule} from '@angular/common/http';
+
+*set up http module in app.module, under imports.
+
+ HttpClientModule,
+
+*Create json file in srt folder (proxy.conf.json) and insert inside
+
+"/api":{
+        "target": "http://localhost:3000",
+        "secure": false
+    }
+
+* in angular.json folder, in serve under development add(Either you can run ng serve --proxy-config proxy.conf.json)
+
+"proxyConfig": "src/proxy.conf.json"
+
+
+** in the component ts file
+eg
+ngOnInit(): void {
+    // to pull data from endpoint you have to subscribe to it
+
+    this.roomservice.getRooms().subscribe(rooms => this.roomsList = rooms);
+  }
+
+
+*in constructer of the service that will consume the api add
+
+private http: HttpClient
+
+eg
+
+ getRooms() {
+    // due to the proxy con dont have to insert full url, just the endpoint
+    // in order to get the data in a specific format @the get in <> specify the object type to be formatted in
+    return this.http.get<roomsList[]>('/api/rooms');
+  }

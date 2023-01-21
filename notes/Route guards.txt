@@ -1,0 +1,52 @@
+canActivate - if user is a vaild entity to activate a specific route
+**to use a can Activate guard insert within a path -canActivate: [LoginGuard] in app routing
+
+eg { path: 'employee', component: EmployeeComponent, canActivate: [LoginGuard] },
+
+canActivateChild - allow access to child routes 
+** to use insert canActivateChild: [RoomGuard], within path of the feature in feature routing
+eg
+
+    path: '', component: RoomsComponent,
+    canActivateChild: [RoomGuard],
+    children: [
+      { path: 'add', component: RoomsAddTemplateDrivenComponent },
+      { path: ':roomid', component: RoomsBookingComponent }]
+  },
+
+canLoad - allow a page to be loaded only after condition is met
+** to use insert canLoad:[guard] in the path route
+eg
+path: 'rooms',
+    loadChildren: () => import('./rooms/rooms.module').then((m) => m.RoomsModule),
+    canActivate: [LoginGuard],
+    canLoad:[LoginGuard]
+
+
+canDeactivate - if user can exit a route
+** by component change from unknown to the feature component
+**in feature routing module add this to the route
+canDeactivate:[guardName]
+eg
+const routes: Routes = [{ path: '', component: BookingComponent, canDeactivate: [BookingGuard] }];
+
+resolve -(prefetech data)make sure page is not loaded without the data,when large data is required
+**create a guard, delete the implements and replace it with resolve guard
+export class CommentGuard implements Resolve<the http get values> {
+
+**return the data once captured
+eg
+constructor(private commentService: CommentService) {
+
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Comments[] | Observable<Comments[]> | Promise<Comments[]> {
+    	//returns the data
+	return this.commentService.getComments();
+  }
+
+**add guard to route  resolve: { commets: guardName}
+eg
+const routes: Routes = [{ path: '', component: CommentComponent, resolve: { commets: CommentGuard } }];
+
+

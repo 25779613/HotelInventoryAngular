@@ -1,0 +1,10 @@
+** in the routing.module file in the feature under routes
+**nested route, to load html in same page using children:[ {path} ]
+**remove path before /( rooms/) because its alread in the path
+eg 
+{ path: 'rooms', component: RoomsComponent,
+ children: [{ path: ':roomid', component: RoomsBookingComponent }] },
+
+** then load the route in the html file of the parent path using router outlet
+
+<router-outlet></router-outlet>

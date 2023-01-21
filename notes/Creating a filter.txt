@@ -1,0 +1,3 @@
+**import ReactiveFormsModule in feature app module
+
+check rooms.component, room-list component, htmls for both, filter pipe

@@ -1,0 +1,33 @@
+ng new <name> // create new angular project
+ng serve -o // to start running server
+ng g c viewName // to create a view(Create component) 
+ng g s service // to create a service(business logic)    
+ng g d name // to create a directive
+ng g m moduleName --routing // to create a module with routing
+ng g m booking --route=booking --routing --module=app // create a module thats lazy loaded already
+ng g p pipeName // create a pipe
+ng build -c=production // build project with production mode
+pipes are for formatting icon is | (eg | date: "shortDate")    
+
+**Anything related to routes ,use ActivatedRouteService
+
+to create a specific instance of a service(in @Component)
+provider : [serviceName]                                                   
+
+!. - if value isnt initalized
+?. - if value contains a null
+****check value providers**** 
+***observable***              
+***RxJs***       
+***app initalize***  
+***bootstrap***
+**Initialization token***
+***document***     
+***directives***
+***@HostListener***  
+**lazy load employee component** 
+ng serve --proxy-config proxy.conf.json // to create proxy to consume api over app
+ng add @angular/material //to add angular material
+                                                                               
+
+ctrl+P to search file in dev tools                                                         

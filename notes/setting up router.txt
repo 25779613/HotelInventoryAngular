@@ -1,0 +1,17 @@
+**Accept app routing when setting up angular project
+**In app-routing.module.ts in routes add urls for each component including default url
+
+const routes: Routes = [
+  { path: 'employee', component: EmployeeComponent },
+  { path: 'rooms', component: RoomsComponent },
+  { path: 'rooms/:id', component: RoomsBookingComponent },//dynamic routing check rooms-list component html
+  { path: '', redirectTo: '/rooms', pathMatch: 'full' },// setting up default path check app-nav html
+  { path: '**', component: NotfoundComponent } // wildcard route incase url doesnt exist
+];
+
+** in app.component.html add or any page that needs to use this information 
+<router-outlet></router-outlet>
+
+** use router link to load page not href
+<a routerLink="employee">emp</a>
+<a routerLink="rooms">rooms</a> 
